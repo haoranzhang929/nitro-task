@@ -1,0 +1,12 @@
+{
+  "extends": ["../.eslintrc.json", "plugin:react/recommended"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "@typescript-eslint/explicit-module-boundary-types": "off"
+  },
+  "root": true
+}

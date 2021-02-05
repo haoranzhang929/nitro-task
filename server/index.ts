@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 8000;
 app.get("/", (req, res) => res.send("Express + TypeScript Server"));
 
 const simulateDateFetching = async (delay: number) => {
-  await new Promise((r) => setTimeout(r, delay));
+  await new Promise(r => setTimeout(r, delay));
   return exampleData;
 };
 
