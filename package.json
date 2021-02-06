@@ -6,10 +6,13 @@
   "scripts": {
     "start": "node server",
     "client": "npm start --prefix client",
+    "test": "npm run test --prefix client",
+    "test:watch": "npm run test:watch --prefix client",
     "server": "npm run lint:server && nodemon server/index.ts",
     "dev": "npm run typecheck && concurrently \"npm run server\" \"npm run client\"",
-    "build": "tsc --project ./",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run build:server && npm run build:client",
+    "build:server": "tsc --project ./",
+    "build:client": "npm run build --prefix client",
     "typecheck": "echo 'Type Checking...' && tsc --noEmit && echo 'Type Checking Completed'",
     "lint:server": "echo 'Server Code Lint Checking...' && eslint --ext .js,.jsx,.ts,.tsx server && echo 'Lint Checking Completed'",
     "iall": "npm i && npm i --prefix client"

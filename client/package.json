@@ -17,9 +17,10 @@
     "@types/react-dom": "^17.0.0"
   },
   "scripts": {
-    "start": "npm run lint:client && react-scripts start",
-    "build": "npm run lint:client && react-scripts build",
-    "test": "react-scripts test",
+    "start": "npm run lint:client && npm test && react-scripts start",
+    "build": "npm run lint:client && npm test && react-scripts build",
+    "test": "CI=true react-scripts test",
+    "test:watch": "react-scripts test",
     "eject": "react-scripts eject",
     "lint:client": "echo 'Client Lint Checking...' && eslint --ext .js,.jsx,.ts,.tsx src && echo 'Lint Checking Completed'"
   },
