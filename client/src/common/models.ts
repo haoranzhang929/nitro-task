@@ -1,7 +1,7 @@
 export interface ListData {
   id: number;
   location: string;
-  time: string;
+  time: number;
   author: string;
   text: string;
 }

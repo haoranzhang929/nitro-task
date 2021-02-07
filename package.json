@@ -15,7 +15,7 @@
     "build:client": "npm run build --prefix client",
     "typecheck": "echo 'Type Checking...' && tsc --noEmit && echo 'Type Checking Completed'",
     "lint:server": "echo 'Server Code Lint Checking...' && eslint --ext .js,.jsx,.ts,.tsx server && echo 'Lint Checking Completed'",
-    "iall": "npm i && npm i --prefix client"
+    "iall": "npm i && cd client && npm i && cd .."
   },
   "eslintConfig": {
     "extends": "react-app"

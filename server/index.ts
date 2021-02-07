@@ -10,7 +10,8 @@ app.get("/", (req, res) => res.send("Express + TypeScript Server"));
 
 const simulateDateFetching = async (delay: number): Promise<ListData[]> => {
   await new Promise(r => setTimeout(r, delay));
-  return exampleData;
+  // Convert 10-digit timestamp to 13-digit
+  return exampleData.map(d => ({ ...d, time: Number(d.time) * 1000 }));
 };
 
 app.get("/api/posts", async (req, res) => res.send(await simulateDateFetching(200)));

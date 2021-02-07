@@ -11,7 +11,10 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 
+import format from "date-fns/format";
+
 import { ForamtedList } from "../common/models";
+import { TIME_FORMAT } from "../common/constants";
 
 interface TreeViewProps {
   foramtedList: ForamtedList[];
@@ -29,9 +32,13 @@ const useStyles = makeStyles(() =>
       justifyContent: "flex-end",
       padding: "0 20px 20px 0"
     },
-    secondaryInfo: {
+    postInfo: {
       textAlign: "end",
       padding: "8px 4px 0 0"
+    },
+    dateInfo: {
+      textAlign: "end",
+      padding: "0 4px 0 0"
     }
   })
 );
@@ -47,7 +54,7 @@ const TreeView = (props: TreeViewProps) => {
       {foramtedList.map(({ key, data }, idx) => {
         return (
           <TreeItem nodeId={`group-${key}-${idx}`} label={key} key={`group-${key}-${idx}`}>
-            {data.map(({ id, text, author, location }, n) => (
+            {data.map(({ id, text, author, location, time }, n) => (
               <React.Fragment key={`item-${id}`}>
                 <Card className={classes.card}>
                   <CardContent>
@@ -57,8 +64,11 @@ const TreeView = (props: TreeViewProps) => {
                     <Typography variant="h5" component="h2">
                       {text}
                     </Typography>
-                    <Typography className={classes.secondaryInfo} color="textSecondary">
+                    <Typography className={classes.postInfo} color="textSecondary">
                       by {author} from {location}
+                    </Typography>
+                    <Typography className={classes.dateInfo} color="textSecondary">
+                      on {format(Number(time), TIME_FORMAT.LONG_LOCALIZED_DATE)}
                     </Typography>
                   </CardContent>
                   <CardActions className={classes.cardButton}>

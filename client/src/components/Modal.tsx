@@ -5,9 +5,11 @@ import Modal from "@material-ui/core/Modal";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
+import format from "date-fns/format";
+
 import { EditableField } from "../common/enums";
 import { ListData } from "../common/models";
-import { EMPTY_INPUT } from "../common/constants";
+import { EMPTY_INPUT, TIME_FORMAT } from "../common/constants";
 
 interface EditModalProps {
   editing: boolean;
@@ -81,10 +83,12 @@ const EditModal = (props: EditModalProps) => {
           </div>
           <TextField
             label="Time (Read Only)"
-            defaultValue={selectedPost.time}
-            InputProps={{
-              readOnly: true
+            type="datetime-local"
+            defaultValue={format(Number(selectedPost.time), TIME_FORMAT.DATETIME_LOCAL)}
+            InputLabelProps={{
+              shrink: true
             }}
+            disabled
           />
           <TextField
             label="Text (Read Only)"
@@ -94,6 +98,7 @@ const EditModal = (props: EditModalProps) => {
             InputProps={{
               readOnly: true
             }}
+            disabled
           />
           <div className={classes.buttonGroup}>
             <Button
