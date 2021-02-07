@@ -5,7 +5,7 @@ export const sortGroupedData = (
   groupedData: Map<string, ListData[]>,
   order = SortOrder.Acceding
 ) => {
-  const sortByMultiplier = order === SortOrder.Acceding ? 1 : -1;
+  const sortByMultiplier = order === SortOrder.Acceding ? -1 : 1;
   const keys = [];
   for (const i of groupedData.keys()) {
     keys.push(i);
