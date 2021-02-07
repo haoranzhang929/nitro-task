@@ -5,7 +5,7 @@ import TreeView from "./TreeView";
 test("TreeView title should render", () => {
   render(
     <TreeView
-      foramtedList={[
+      formattedList={[
         {
           key: "testkey",
           data: [{ id: 1, author: "user", time: "123", location: "tes", text: "content" }]
@@ -23,7 +23,7 @@ test("TreeView title should render", () => {
 test("TreeView item should render when key is clicked", () => {
   render(
     <TreeView
-      foramtedList={[
+      formattedList={[
         {
           key: "testkey",
           data: [{ id: 1, author: "user", time: "123", location: "tes", text: "content" }]
@@ -43,7 +43,7 @@ test("TreeView item should render when key is clicked", () => {
 test("Edit button should be disabled during editing", () => {
   render(
     <TreeView
-      foramtedList={[
+      formattedList={[
         {
           key: "testkey",
           data: [{ id: 1, author: "user", time: "123", location: "tes", text: "content" }]

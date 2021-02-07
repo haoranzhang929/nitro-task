@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 
 import ButtonGroup from "./ButtonGroup";
 import TreeView from "./TreeView";
+import EditModal from "./Modal";
 
 import { EditableField, GroupType } from "../common/enums";
 import { ListData, ForamtedList } from "../common/models";
@@ -16,7 +17,6 @@ import { EMPTY_INPUT } from "../common/constants";
 import { groupData } from "../utils/group";
 import { sortGroupedData } from "../utils/sort";
 import { fetchData } from "../service/http";
-import EditModal from "./Modal";
 
 const fetchList = fetchData<ListData[]>("/api/posts");
 
@@ -36,7 +36,7 @@ function App() {
   const classes = useStyles();
 
   const [list, setList] = useState<ListData[]>([]);
-  const [foramtedList, setForamtedList] = useState<ForamtedList[]>();
+  const [formattedList, setFormattedList] = useState<ForamtedList[]>();
   const [selectedGroupType, setSelectedGroupType] = useState<GroupType>(GroupType.Time);
 
   const [editing, setEditing] = useState(false);
@@ -54,7 +54,7 @@ function App() {
     if (list.length > 0) {
       const groupedData = groupData(selectedGroupType, list);
       const sortedData = sortGroupedData(groupedData);
-      setForamtedList(sortedData);
+      setFormattedList(sortedData);
     }
   }, [list, selectedGroupType]);
 
@@ -107,8 +107,8 @@ function App() {
           selectedGroupType={selectedGroupType}
           setSelectedGroupType={setSelectedGroupType}
         />
-        {foramtedList && (
-          <TreeView foramtedList={foramtedList} editing={editing} handleEditing={handleEditing} />
+        {formattedList && (
+          <TreeView formattedList={formattedList} editing={editing} handleEditing={handleEditing} />
         )}
       </Container>
       <EditModal

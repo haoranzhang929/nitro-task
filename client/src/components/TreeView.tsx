@@ -17,7 +17,7 @@ import { ForamtedList } from "../common/models";
 import { TIME_FORMAT } from "../common/constants";
 
 interface TreeViewProps {
-  foramtedList: ForamtedList[];
+  formattedList: ForamtedList[];
   editing: boolean;
   handleEditing: (postId: number) => void;
 }
@@ -44,14 +44,14 @@ const useStyles = makeStyles(() =>
 );
 
 const TreeView = (props: TreeViewProps) => {
-  const { foramtedList, editing } = props;
+  const { formattedList, editing } = props;
   const { handleEditing } = props;
 
   const classes = useStyles();
 
   return (
     <MUITreeView defaultCollapseIcon={<ExpandMoreIcon />} defaultExpandIcon={<ChevronRightIcon />}>
-      {foramtedList.map(({ key, data }, idx) => {
+      {formattedList.map(({ key, data }, idx) => {
         return (
           <TreeItem nodeId={`group-${key}-${idx}`} label={key} key={`group-${key}-${idx}`}>
             {data.map(({ id, text, author, location, time }, n) => (
