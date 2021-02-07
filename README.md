@@ -15,7 +15,7 @@
   - backend server runs on http://localhost:8000
   - `/api/posts` is the endpoint created to serve example json file, 200 milliseconds delay are set to simulate real-life scenario
 
-- Both frontend and backend code are checked by `esling`, `prettier`, `typescript` and `UI tests` before running or building
+- Both frontend and backend code are checked by `eslint`, `prettier`, `typescript` and `UI tests` before running or building
 
 ### Technologies used:
 
